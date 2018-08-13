@@ -7,13 +7,27 @@ Run the AWS CLI without needing to install any dependencies, thanks to Docker!
 To install, run this one-liner on your Linux system:
 
 ```
-sudo curl -sL https://raw.githubusercontent.com/hiveco/awscli/aws.sh -o /usr/local/bin/aws; \
+sudo curl -sL https://raw.githubusercontent.com/hiveco/awscli/master/aws.sh -o /usr/local/bin/aws; \
 sudo chmod +x /usr/local/bin/aws
 ```
 
 From now on, invoking `aws` will run `hiveco/awscli` in a container, using AWS credentials from the config file in your home directory. The `us-east-1` region will be auto-selected. To use a different region, set the `AWS_DEFAULT_REGION` environment variable using your favourite method.
 
 Using this convenience script also automatically mounts the current directory under `/here`, which is useful for running commands like `aws s3 cp`.
+
+## Credentials
+
+Add your credentials to `~/.aws/credentials` as follows:
+
+```
+AWS_ACCESS_KEY_ID=<key-id>
+AWS_SECRET_ACCESS_KEY=<secret-key>
+cat << 'EOF' > ~/.aws/credentials
+[default]
+aws_access_key_id=$AWS_ACCESS_KEY_ID
+aws_secret_access_key=$AWS_SECRET_ACCESS_KEY
+EOF
+```
 
 ## Advanced Usage
 
