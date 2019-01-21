@@ -18,6 +18,8 @@ docker run \
 	-t --rm \
 	-v $aws_conf:/root/.aws/credentials \
 	-v "$PWD":/here \
+	-e AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID" \
+	-e AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY" \
 	-e AWS_DEFAULT_REGION=$region \
 	hiveco/awscli "$@"
 

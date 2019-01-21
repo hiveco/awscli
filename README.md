@@ -22,12 +22,15 @@ Add your credentials to `~/.aws/credentials` as follows:
 ```
 AWS_ACCESS_KEY_ID=<key-id>
 AWS_SECRET_ACCESS_KEY=<secret-key>
-cat << 'EOF' > ~/.aws/credentials
+mkdir -p ~/.aws
+cat << EOF > ~/.aws/credentials
 [default]
 aws_access_key_id=$AWS_ACCESS_KEY_ID
 aws_secret_access_key=$AWS_SECRET_ACCESS_KEY
 EOF
 ```
+
+You can test that your credentials work by running `aws sts get-caller-identity`.
 
 ## Advanced Usage
 
